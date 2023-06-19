@@ -166,11 +166,14 @@ h2 {
 /* layout */
 
 .wrapper {
-  width: min(900px, 100% - 1rem);
+  width: min(1100px, 100% - 1rem);
   margin-inline: auto;
 }
 
-
+.main-grid {
+  display: grid;
+  row-gap: 4rem;
+}
 
 /* components */
 
@@ -210,4 +213,40 @@ h2 {
 .btn:hover,
 .btn:focus {
   background-color: var(--clr-neutral-dark);
+}
+
+.recommended-articles {
+  display: grid;
+  gap: 2rem;
+}
+
+.recommended-article {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: max-content;
+  column-gap: 1.5rem;
+  grid-template-areas:
+    "image ordinal"
+    "image preview";
+}
+
+.recommended-article img {
+  grid-area: image;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-ordinal {
+  grid-area: ordinal;
+}
+
+.recommended-article .article-preview {
+  grid-area: preview;
+  align-self: self-end;
+}
+
+@media (min-width: 800px) {
+  .recommended-articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
